@@ -4,7 +4,7 @@ export default defineConfig({
   markdown: {
     toc: { includeLevel: [1, 2, 3] },
   },
-  title: 'Opinions : Sambit Sahoo',
+  title: 'Opinions',
   description: 'My opinions in Vue 3 and how to build production apps in Vue',
   themeConfig: {
     nextLinks: true,
@@ -14,11 +14,15 @@ export default defineConfig({
     editLinkText: 'Edit this page on GitHub',
     lastUpdated: 'Last Updated',
     nav: [
-      { text: 'Guide', link: '/guide/index.html', activeMatch: '^/guide/' },
+      {
+        text: "What's this ?",
+        link: '/why',
+      },
+      { text: 'My Blog', link: 'https://sambitsahoo.com', target: '_blank' },
     ],
     sidebar: {
       '/': getSidebar(),
-      '/guide': getSidebar(),
+      '/chapters': getSidebar(),
     },
   },
   vite: {
@@ -34,9 +38,12 @@ function getSidebar() {
     {
       text: 'Chapters',
       children: [
-        { text: 'Folder structure', link: '/guide/folder-structure' },
-        { text: 'Coding practices', link: '/guide/coding-practices' },
-        { text: 'Quasar optimizations', link: '/guide/quasar-optimizations' },
+        { text: 'Folder structure', link: '/chapters/folder-structure' },
+        { text: 'Coding practices', link: '/chapters/coding-practices' },
+        {
+          text: 'Quasar optimizations',
+          link: '/chapters/quasar-optimizations',
+        },
       ],
     },
   ];
