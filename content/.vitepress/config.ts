@@ -4,7 +4,7 @@ export default defineConfig({
   markdown: {
     toc: { includeLevel: [1, 2, 3] },
   },
-  title: 'Opinions',
+  title: 'Opinions : Sambit Sahoo',
   description: 'My opinions in Vue 3 and how to build production apps in Vue',
   themeConfig: {
     nextLinks: true,
@@ -21,7 +21,6 @@ export default defineConfig({
       '/guide': getSidebar(),
     },
   },
-  mpa: true,
   vite: {
     build: {
       target: 'esnext',
