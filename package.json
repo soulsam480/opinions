@@ -1,0 +1,16 @@
+{
+  "name": "opinions",
+  "version": "0.0.0",
+  "description": "My opinions in Vue 3 and how to build production apps in Vue",
+
+  "scripts": {
+    "dev": "vitepress dev content",
+    "build": "vitepress build content",
+    "serve": "vitepress serve content"
+  },
+  "author": "soulsam480 <soulsam480@hotmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "vitepress": "^0.21.6"
+  }
+}
