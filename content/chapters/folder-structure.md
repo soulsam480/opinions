@@ -2,7 +2,7 @@
 
 
 ## Problem
-I've seen that, while working on apps, developers often forget to organize their project folder structure efficiently. By organizing I mean separating them based on their concern instead of their type. Generally we put similar files in a single root folder and I feel this can be improved. While this setup works for small projects with lesser number of files, it'll fall apart once the size of the project grows. Soon you'll forget the location of files and start guessing it. Even though we can search for a file quickly with `vscode command pallete`, maintaining an organized project folder structure will help a lot while working. 
+I've seen that, while working on apps, developers often forget to organize their project folder structure efficiently. By organizing I mean separating them based on their concern instead of their type. Generally we put similar files in a single root folder and I feel this can be improved. While this setup works for small projects with lesser number of files, it'll fall apart once the size of the project grows. Soon you'll forget the location of files and start guessing it. Even though we can search for a file quickly with `vscode command pallete`, maintaining an organized project folder structure will help finding files easier, make it look clean and also easier to maintain. 
 
 ## Separation by concern
 
