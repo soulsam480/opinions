@@ -25,6 +25,22 @@ export default defineConfig({
       '/chapters': getSidebar(),
     },
   },
+  head: [
+    [
+      'meta',
+      {
+        property: 'og:image',
+        content: 'https://opinions.sambitsahoo.com/opinions.webp',
+      },
+    ],
+    [
+      'meta',
+      {
+        property: 'og:title',
+        content: 'My opinions in Vue 3 and how to build production apps in Vue',
+      },
+    ],
+  ],
   vite: {
     build: {
       target: 'esnext',
