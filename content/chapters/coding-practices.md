@@ -2,6 +2,106 @@
 
 This chapter is less likely to be adopted by most of the readers as I'm very particular in how I write code.
 
+
+## level 1
+> smaller practices
+
+### always declare reactive variables with initial value
+- why ? better readability and editor intellisense
+```ts
+// Bad
+const SomeVal = ref();
+
+// Better
+const someVal = ref('')
+```
+- if the variable is a non primitive, better to pass a TS interface/type as a generic
+```ts
+interface User {
+name: string
+}
+
+const someVal = ref<User>({
+    name: ''
+})
+```
+### a function should do only one thing
+- yes, trust me, this will make the code a lot more readable and better to maintain without breaking anything
+```ts{2-10}
+// Bad
+async function makeComplexTask() {
+    let val = '';
+
+    if(true){
+        val = 'some thing'
+    } else if(someCondition){
+        val = 'other thing'
+    } else{
+        val = 'more complex code'
+    }
+
+    const res = await someApiCall(val);
+}
+
+// Better
+function smallerTask() {
+    let val = '';
+
+    if(true){
+        val = 'some thing'
+    } else if(someCondition){
+        val = 'other thing'
+    } else{
+        val = 'more complex code'
+    }
+
+    return val
+}
+
+async function makeComplexTask() {
+    const val = smallerTask()
+
+    const res = await someApiCall(val);
+}
+```
+- as you can see we refactored the highlighted portion in the above function to a smaller function which does the same task and returns the result, the code is easier to read even though this is a small example.
+- also if we change something inside `smallerTask` function, the `makeComplexTask` function is less likely to break if we retrun desirable result.
+
+### write better `if-else`/`flow control` blocks
+- i don't really like `if-else` blocks and avoid them as much as possible, but there are some scenarios where you have to use them. let's see an example on how we commonly write `flow-control` blocks.
+```ts
+    if(condA){
+        // stuff..
+    } else if(condB){
+        // stuff..
+        if(condD){
+            // more stuff here
+        }
+    } else if(condC){
+        // stuff..
+    }
+```
+- this what most developers do from what i've seen. this gets the job done but makes the code extremely hard to read and understand.
+- also while reading, you always have to go back to the parent `if-else` block to follow along correctly. it's a hassle.
+- a better approach will be writing the logic bottom up in single `if` blocks and returning to stop the execution flow. e.g.
+```ts
+    if(condA) {
+        // do stuff
+    }
+
+    if(condC) {
+        // do stuff
+    }
+
+    if(!condB) return; 
+    // notice how we've used negative logic to stop the execution flow
+    // do stuff...
+
+    if(!conD) return;
+    // do stuff
+```
+## level 2
+> specific scenarios
 ## reactive declarations
 vue's reactivity system is really flexible. the most impressive part is it doesn't depend on `vue components` to declare and consume reactive variables. this makes it really easy to manage reactive state inside and outside of vue components. 
 
@@ -88,7 +188,6 @@ function someTask(){
     triggerRef(hugeNestedDS)
 }
 </script>
-
 ```
 
 ### wrap provided object of `ref`s with `reactive` to retain reactivity after injection
