@@ -1,0 +1,16 @@
+name: test
+
+env:
+  CI: true
+
+on: deployment_status
+
+jobs:
+  unique_id:
+    runs-on: ubuntu-latest
+    steps:
+      - name: log something
+        run: echo github.event
+        run: echo github.ref
+        run: echo github.event.deployment.ref
+        run: echo github.ref_type
